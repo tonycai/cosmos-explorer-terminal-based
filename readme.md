@@ -44,7 +44,8 @@ You can also build and run the container manually:
 
 ```sh
 docker build -t cosmos-gex .
-docker run -it --rm -e TERM=xterm-256color cosmos-gex -h devnet-rpc.aiw3.io -p 443 -s
+docker run -it --rm -e TERM=xterm-256color cosmos-gex /app/gex -h devnet-rpc.aiw3.io -p 443 -s
+docker exec -it gex /app/gex -h devnet-rpc.aiw3.io -p 443 -s
 ```
 
 ## Run GEX
