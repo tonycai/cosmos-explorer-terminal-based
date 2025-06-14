@@ -14,6 +14,39 @@ To install the GEX binary:
 go install github.com/cosmos/gex@latest
 ```
 
+## Deployment & Usage with Docker
+
+You can run GEX in a Docker container using the provided `Dockerfile` and `docker-compose.yml`.
+
+### 1. Build and Run with Docker Compose
+
+```sh
+docker-compose up --build
+```
+
+This will build the Docker image and start the GEX explorer, connecting by default to the remote RPC service at `https://devnet-rpc.aiw3.io:443` with SSL enabled.
+
+- The terminal UI will appear in your shell.
+- Press `q` or `esc` to quit the explorer.
+
+### 2. Customizing the RPC Endpoint
+
+To connect to a different node, edit the `command` section in `docker-compose.yml`:
+
+```yaml
+command: ["/app/gex", "-h", "your-node-host", "-p", "your-node-port", "-s"]
+```
+- Remove the `-s` flag if you do not want to use SSL.
+
+### 3. Run with Docker Only (Optional)
+
+You can also build and run the container manually:
+
+```sh
+docker build -t cosmos-gex .
+docker run -it --rm -e TERM=xterm-256color cosmos-gex -h devnet-rpc.aiw3.io -p 443 -s
+```
+
 ## Run GEX
 
 To launch a GEX explorer in your terminal window, type:

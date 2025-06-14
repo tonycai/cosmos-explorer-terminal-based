@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  gex:
+    build: .
+    image: cosmos-gex:latest
+    container_name: gex
+    environment:
+      - TERM=xterm-256color
+    stdin_open: true
+    tty: true
+    command: ["/app/gex", "-h", "devnet-rpc.aiw3.io", "-p", "443", "-s"]
+    # Uncomment and adjust the following if you want to connect to a remote node
+    # command: ["/app/gex", "-h", "your-node-host", "-p", "your-node-port"] 
